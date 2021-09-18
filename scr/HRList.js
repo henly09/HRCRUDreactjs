@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import bg from '../assets/bg.jpg';
 import { Image,StyleSheet, FlatList, Text, View, ActivityIndicator, TouchableOpacity, ImageBackground} from 'react-native';
-import hotel from '../assets/hotel.png';
+import logo from '../assets/logo.png';
 // Ownded and Created by : Montera, John Henly A.
 // FB: fb.com/mhax.ter
 // Gmail: monterahens@gmail.com 
-export default class HotelList extends Component {
+export default class HRList extends Component {
 
     constructor()
     {
@@ -17,7 +17,7 @@ export default class HotelList extends Component {
     }
 
     componentDidMount() {
-        return fetch('http://10.0.2.2:80/Hotel/displayall.php')
+        return fetch('http://10.0.2.2:80/HR/displayall.php')
           .then((response) => response.json())
           .then((responseJson) => {
             this.setState({
@@ -31,7 +31,7 @@ export default class HotelList extends Component {
          
         <TouchableOpacity onPress={() => alert(item.body)}>
             <View style={styles.item}>
-                <Text style={styles.text}>ID#:{item.customerID}, Name:{item.fullname}, Reserve#:{item.reservID}</Text>
+              <Text style={styles.text}>ID#:{item.employeeID}, LastName:{item.lastName}, Branch:{item.branch}</Text>
             </View>
         </TouchableOpacity>
      );
@@ -57,45 +57,33 @@ export default class HotelList extends Component {
                 width: '100%'
                 }}>
 
-          <Image 
-         source= {hotel}
-         style={{ 
-         height: 150,
-         width: 150,
-         position: 'absolute',
-         alignSelf:'flex-end',
-         right: 12,
-         top: 20,
-         resizeMode: 'center',
-         }}/>
-
-        <Text style={{
-        fontSize: 50,
+<Text style={{
+        fontSize: 35,
         fontFamily: 'sans-serif',
         fontWeight: 'bold',
         fontStyle: "italic",
         position: 'absolute',
-        top: 55,
-        left: 10,
+        top: 65,
+        left: 8,
         color: 'white',
         textShadowColor:'#0c0d0e',
         textShadowOffset:{width: 10, height: 10},
         textShadowRadius:20,
-      }}> HOTEL </Text>         
+      }}> HUMAN RESOURCES </Text> 
 
-        <Text style={{
-        fontSize: 18,
+<Text style={{
+        fontSize: 20,
         fontFamily: 'sans-serif',
         fontWeight: 'bold',
         fontStyle: "italic",
         position: 'absolute',
         top: 110,
-        left: 20,
+        left: 13,
         color: 'white',
         textShadowColor:'#0c0d0e',
         textShadowOffset:{width: 10, height: 10},
         textShadowRadius:20,
-      }}> DATABASE MANAGEMENT™</Text>
+      }}> DATABASE LIST </Text>
 
 
                 <View style={styles.container}>     

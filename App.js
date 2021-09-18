@@ -11,13 +11,13 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import ModalDropdown from 'react-native-modal-dropdown';
 
-import HotelInsert from './scr/HotelInsert.js';
-import HotelSearch from './scr/HotelSearch.js';
-import HotelDelete from './scr/HotelDelete.js';
-import HotelList from './scr/HotelList.js';
+import HRInsert from './scr/HRInsert.js';
+import HRSearch from './scr/HRSearch.js';
+import HRDelete from './scr/HRDelete.js';
+import HRList from './scr/HRList.js';
 import dash from './assets/dash.png';
-import hotel from './assets/hotel.png';
 import bg from './assets/bg.jpg';
+import logo from './assets/logo.png';
 import home from './assets/home.png';
 import insert from './assets/insert.png';
 import search from './assets/search.png';
@@ -28,7 +28,7 @@ import list from './assets/list.png';
 function HomeScreen({ navigation }) {
 
 
-  const pages = ['Insert', 'Search','Delete', 'HotelList'];
+  const pages = ['Insert', 'Search','Delete', 'HumanResourcesList'];
 
   return (
     <View>
@@ -47,7 +47,7 @@ function HomeScreen({ navigation }) {
         right: 10,
         position: 'relative',
       }}
-        options={['Insert', 'Search','Delete', 'Hotel List']}
+        options={['Insert', 'Search','Delete', 'HR List']}
         animated
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
@@ -86,12 +86,12 @@ function HomeScreen({ navigation }) {
         position: 'absolute',
         alignSelf:'center',
         top: 320,
-        color: 'white',
-        textShadowColor:'#0c0d0e',
-        textShadowOffset:{width: 10, height: 10},
-        textShadowRadius:20,
+        color: '#0f7cc3',
+        textShadowColor:'white',
+        textShadowOffset:{width: 2, height: 2},
+        textShadowRadius:5,
         textAlign: 'center'
-      }}> LUXURY BOUTIQUE {"\n"} DAVAO HOTEL </Text>
+      }}> SWIPE WIRE {"\n"} I.T SOLUTIONS </Text>
 
         <Text style={{
         fontSize: 20,
@@ -102,17 +102,17 @@ function HomeScreen({ navigation }) {
         alignSelf:'center',
         top: 410,
         color: 'white',
-        textShadowColor:'#0c0d0e',
-        textShadowOffset:{width: 10, height: 10},
-        textShadowRadius:20,
+        textShadowColor:'black',
+        textShadowOffset:{width: 2, height: 2},
+        textShadowRadius:5,
         textAlign: 'center'
-      }}> Hotel Reservation Database System Management™ </Text>
+      }}> Human Resources Database System Management™ </Text>
 
         <Image 
-         source= {hotel}
+         source= {logo}
          style={{ 
-         height: 200,
-         width: 340,
+         height: 250,
+         width: 250,
          position: 'absolute',
          alignSelf:'center',
          top: 100,
@@ -126,29 +126,29 @@ function HomeScreen({ navigation }) {
         }}>
 
       <Button
-        color="#630513"
+        color="#0f7cc3"
         title={"Insert"}
         onPress={() => navigation.navigate('Insert')}
        
       />
 
       <Button
-        color="#630513"
+        color="#0f7cc3"
         title={"Search"}
         onPress={() => navigation.navigate('Search')}
        
       />
 
       <Button
-        color="#630513"
+        color="#0f7cc3"
         title={"Delete"}
         onPress={() => navigation.navigate('Delete')}
       />
 
       <Button
-        color="#630513"
-        title={"Hotel List"}
-        onPress={() => navigation.navigate('HotelList')}
+        color="#0f7cc3"
+        title={"HR List"}
+        onPress={() => navigation.navigate('HumanResourcesList')}
       />
 
       </View>
@@ -170,7 +170,7 @@ export default function App() {
       screenOptions={{
         tabBarStyle: { 
           position: 'absolute',
-          backgroundColor: '#630513',
+          backgroundColor: '#0f7cc3',
           borderTopLeftRadius: 5,
           borderTopRightRadius: 5,
           height: 60,
@@ -198,7 +198,7 @@ export default function App() {
             ),
         }} />
 
-      <Tab.Screen name="Insert" component={HotelInsert}  options = {{
+      <Tab.Screen name="Insert" component={HRInsert}  options = {{
             headerShown: false,
             tabBarIcon: ({focused}) => (
               <View>
@@ -214,7 +214,7 @@ export default function App() {
             ),
         }}/>
 
-      <Tab.Screen name="Search" component={HotelSearch}  options = {{
+      <Tab.Screen name="Search" component={HRSearch}  options = {{
             headerShown: false,
             tabBarIcon: ({focused}) => (
               <View>
@@ -229,7 +229,7 @@ export default function App() {
               </View>
             ),
         }}/>
-      <Tab.Screen name="Delete" component={HotelDelete}  options = {{
+      <Tab.Screen name="Delete" component={HRDelete}  options = {{
             headerShown: false,
             tabBarIcon: ({focused}) => (
               <View>
@@ -246,7 +246,7 @@ export default function App() {
         }}/>
 
     
-      <Tab.Screen name="HotelList" component={HotelList}  options = {{
+      <Tab.Screen name="HumanResourcesList" component={HRList}  options = {{
             headerShown: false,
             tabBarIcon: ({focused}) => (    
               <View>

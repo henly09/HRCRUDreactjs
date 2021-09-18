@@ -10,44 +10,43 @@ import {
     Image,
     TouchableOpacity
 } from 'react-native';
-import hotel from '../assets/hotel.png';
+import logo from '../assets/logo.png';
 import bg from '../assets/bg.jpg';
 // Ownded and Created by : Montera, John Henly A.
 // FB: fb.com/mhax.ter
 // Gmail: monterahens@gmail.com 
-export default class HotelSearch extends Component {
+export default class HRSearch extends Component {
 
     constructor(props)
     {
         super(props);
         this.state={
-            fullname:'',
-            Type_:'',
+            firstName:'',
+            lastName:'',
             sex:'',
+            branch:'',
             date_of_birth:'',
-            phone_num:'',
+            age:'',
             email:'',
+            contact_no:'',
             address:'',
-            room_num:'',
-            room_type:'',
-            no_of_occupants:'',
-            reservID:'',
-            arrival_date:'',
-            departure_date:''
+            job:'',
+            position:'',
+            salary:''
         };
     }
 
     SearchRecord=()=>
     {
-        var customerID=this.state.customerID;
+        var employeeID=this.state.employeeID;
 
-        if(customerID.length==0)
+        if(employeeID.length==0)
         {
             alert("Required Field is Missing");
         }
         else
         {
-            var SearchAPIURL="http://10.0.2.2:80/Hotel/search.php";
+            var SearchAPIURL="http://10.0.2.2:80/HR/search.php";
 
             var header={
                     'Accept':'application/json',
@@ -55,7 +54,7 @@ export default class HotelSearch extends Component {
             };
 
             var Data={
-                customerID:customerID
+                employeeID:employeeID
             };
 
             fetch(
@@ -68,20 +67,18 @@ export default class HotelSearch extends Component {
             )
             .then((response)=>response.json())
             .then((response)=>{
-                this.setState({fullname:response[0].fullname});
-                this.setState({Type_:response[0].Type_});
+                this.setState({firstName:response[0].firstName});
+                this.setState({lastName:response[0].lastName});
                 this.setState({sex:response[0].sex});
+                this.setState({branch:response[0].branch});
                 this.setState({date_of_birth:response[0].date_of_birth});
-                this.setState({phone_num:response[0].phone_num});
+                this.setState({age:response[0].age});
                 this.setState({email:response[0].email});
+                this.setState({contact_no:response[0].contact_no});
                 this.setState({address:response[0].address});
-                this.setState({room_num:response[0].room_num});
-                this.setState({room_type:response[0].room_type});
-                this.setState({no_of_occupants:response[0].no_of_occupants});
-                this.setState({reservID:response[0].reservID});
-                this.setState({arrival_date:response[0].arrival_date});
-                this.setState({departure_date:response[0].departure_date});
-                
+                this.setState({job:response[0].job});
+                this.setState({position:response[0].position});
+                this.setState({salary:response[0].salary});
             })
             .catch((error)=>{
                 alert("Error"+error);
@@ -101,18 +98,18 @@ export default class HotelSearch extends Component {
                 }}>
 
 <Text style={{
-        fontSize: 40,
+        fontSize: 35,
         fontFamily: 'sans-serif',
         fontWeight: 'bold',
         fontStyle: "italic",
         position: 'absolute',
-        top: 55,
-        left: 8,
+        top: 65,
+        left: 10,
         color: 'white',
         textShadowColor:'#0c0d0e',
         textShadowOffset:{width: 10, height: 10},
         textShadowRadius:20,
-      }}> HOTEL </Text> 
+      }}> HUMAN RESOURCES </Text> 
 
 <Text style={{
         fontSize: 20,
@@ -120,30 +117,21 @@ export default class HotelSearch extends Component {
         fontWeight: 'bold',
         fontStyle: "italic",
         position: 'absolute',
-        top: 100,
-        left: 13,
+        top: 110,
+        left: 15,
         color: 'white',
         textShadowColor:'#0c0d0e',
         textShadowOffset:{width: 10, height: 10},
         textShadowRadius:20,
       }}> DATABASE SEARCH SYSTEM </Text>
 
-         <Image 
-         source= {hotel}
-         style={{ 
-         height: 120,
-         width: 120,
-         position: 'absolute',
-         alignSelf:'flex-end',
-         top: 30,
-         resizeMode: 'center',
-         }}/>
+       
 
 
         <View style={styles.viewStyle}>
         <View style= {{ flexDirection: 'row', justifyContent: 'space-evenly'}}>
             <TextInput
-                placeholder={"Enter Customer ID#"}
+                placeholder={"Enter Employee ID#"}
                 placeholderTextColor={"#000000"}
                 keyboardType={"numeric"}
                 style={{
@@ -154,7 +142,7 @@ export default class HotelSearch extends Component {
                     height: 37,
                     width: '70%'
                 }}
-                onChangeText={customerID=>this.setState({customerID})}
+                onChangeText={employeeID=>this.setState({employeeID})}
             />
            <TouchableOpacity
                     onPress={this.SearchRecord}>
@@ -166,44 +154,40 @@ export default class HotelSearch extends Component {
            
             <Text
             style={styles.txtStyle}
-            > {"Name: "+this.state.fullname} </Text> 
+            > {"First Name: "+this.state.firstName} </Text> 
             <Text
             style={styles.txtStyle}
-            > {"Type: "+this.state.Type_} </Text>
+            > {"Last Name: "+this.state.lastName} </Text>
             <Text
             style={styles.txtStyle}
             > {"Sex: "+this.state.sex} </Text>
             <Text
             style={styles.txtStyle}
-            > {"Birthday: "+this.state.date_of_birth} </Text>
+            > {"Branch: "+this.state.branch} </Text>
             <Text
             style={styles.txtStyle}
-            > {"Phone Number: "+this.state.phone_num} </Text>
+            > {"Date of Birth: "+this.state.date_of_birth} </Text>
+            <Text
+            style={styles.txtStyle}
+            > {"Age: "+this.state.age} </Text>
             <Text
             style={styles.txtStyle}
             > {"Email: "+this.state.email} </Text>
             <Text
             style={styles.txtStyle}
+            > {"Contact No#: "+this.state.contact_no} </Text>
+            <Text
+            style={styles.txtStyle}
             > {"Address: "+this.state.address} </Text>
             <Text
             style={styles.txtStyle}
-            > {"RoomNum#: "+this.state.room_num} </Text>
-            <Text
-            style={styles.txtStyle}
-            > {"Room Type: "+this.state.room_type} </Text>
-            <Text
-            style={styles.txtStyle}
-            > {"No of Occupants: "+this.state.no_of_occupants} </Text>
+            > {"Job: "+this.state.job} </Text>
              <Text
             style={styles.txtStyle}
-            > {"Reservation ID: "+this.state.reservID} </Text>
+            > {"Position: "+this.state.position} </Text>
             <Text
             style={styles.txtStyle}
-            > {"Arrival: "+this.state.reservID} </Text>
-            <Text
-            style={styles.txtStyle}
-            > {"Departure: "+this.state.departure_date} </Text>
-
+            > {"Salary: "+this.state.salary} </Text>
 
         </View>
         </ImageBackground>
@@ -219,7 +203,7 @@ const styles=StyleSheet.create({
         flex:1,
         padding:20,
         marginTop:20,
-        top: '13%',
+        top: '15%',
         
     },
 
