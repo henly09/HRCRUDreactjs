@@ -212,7 +212,10 @@ const styles=StyleSheet.create({
         },
 
     text:{
-            fontSize: 14
+            fontSize: 14,
+            fontFamily: 'sans-serif',
+            fontWeight: 'bold',
+            fontStyle: "italic",
         }
 
 
