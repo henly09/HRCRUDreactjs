@@ -6,33 +6,52 @@ import DatePicker from 'react-native-datepicker';
 // Ownded and Created by : Montera, John Henly A.
 // FB: fb.com/mhax.ter
 // Gmail: monterahens@gmail.com 
-export default class HRInsert extends Component
+export default function HRInsert ()
 {
-    constructor(props)
-    {
-        super(props);
-        this.state={
-            firstName:'',
-            lastName:'',
-            sex:'',
-            branch:'',
-            age:'',
-            email:'',
-            contact_no:'',
-            address:'',
-            job:'',
-            position:'',
-            salary:'',
-            date:''
-        };
-    }
-   
+    
+    const [date, setDate] = useState(new Date());
+    const [mode, setMode] = useState('date');
+    const [show, setShow] = useState(false);
+    const [textdate, setTextdate] = useState('yyyy-dd-mm');
 
-    InsertRecord=()=>
+    const [firstName1, setFirstName] = useState('');
+    const [lastName1, setLastName] = useState('');
+    const [sex1, setSex] = useState('');
+    const [branch1, setBranch] = useState('');
+    const [date_of_birth1, setDate_of_Birth] = useState('');
+    const [age1, setAge] = useState('');
+    const [email1, setEmail] = useState('');
+    const [contact_no1, setContact_no] = useState('');
+    const [address1, setAddress] = useState('');
+    const [job1, setJob] = useState('');
+    const [position1, setPosition] = useState('');
+    const [salary1, setSalary] = useState('');
+   
+    const onChange = (event, selectedDate) => {
+        const currentDate = selectedDate || date;
+        setShow(Platform.OS === 'ios');
+        setDate(currentDate);
+  
+        let tempDate = new Date(currentDate);
+        let fDate = tempDate.getFullYear() + '-' + (tempDate.getDate() + 1) + '-' + tempDate.getMonth();
+        setOrderdate(fDate);
+        let fTime = tempDate.getHours() + ':' + tempDate.getMinutes();
+        setDate_of_Birth(fTime);
+        setTextdate(fTime);
+  
+        console.log('CheckerDate:'+ fDate);
+      }
+  
+      const showMode = (currentMode) => {
+        setShow(true);
+        setMode(currentMode);
+      }
+
+    const InsertRecord=()=>
     {
-        var firstName=this.state.firstName;
-        var lastName=this.state.lastName;
-        var sex=this.state.sex;
+        var firstName=firstName1;
+        var lastName=lastName1;
+        var sex=sex1;
 
         if (sex == 0){
             sex = "Male"
@@ -44,7 +63,7 @@ export default class HRInsert extends Component
             sex = "Others.."
         }
 
-        var branch=this.state.branch;
+        var branch=branch1;
 
         if (branch == 0){
             branch = "Davao City"
@@ -77,12 +96,12 @@ export default class HRInsert extends Component
             branch = "Makati City"
         }
 
-        var date_of_birth=this.state.date;
-        var age=this.state.age;
-        var email=this.state.email;
-        var contact_no = this.state.contact_no;
-        var address = this.state.address;
-        var job=this.state.job;
+        var date_of_birth=date_of_birth1;
+        var age=age1;
+        var email=email1;
+        var contact_no = contact_no1;
+        var address = address1;
+        var job=job1;
 
         if (job == 0){
             job = "Chief Executive Officer (CEO)"
@@ -139,7 +158,7 @@ export default class HRInsert extends Component
             job = "Professional Staff"
         }
         
-        var position=this.state.position;
+        var position=position1;
 
         if (position == 0){
             position = "Senior V"
@@ -178,7 +197,7 @@ export default class HRInsert extends Component
             position = "Entry I"
         }
 
-        var salary=this.state.salary;
+        var salary=salary1;
 
         switch (job)
         {
@@ -334,9 +353,7 @@ export default class HRInsert extends Component
                 })
         }
     }
-    render()
-    
-    {
+   
         return(
 
             <View>
@@ -383,14 +400,14 @@ export default class HRInsert extends Component
                     placeholder={"FIrst Name"}
                     placeholderTextColor={"black"}
                     style={styles.txtStyle}
-                    onChangeText={firstName=>this.setState({firstName})}
+                    onChangeText={firstName=>setFirstName(firstName)}
                 />
 
                 <TextInput
                     placeholder={"Last Name"}
                     placeholderTextColor={"black"}
                     style={styles.txtStyle}
-                    onChangeText={lastName=>this.setState({lastName})}
+                    onChangeText={lastName=>setLastName(lastName)}
                 />
 
 
@@ -417,7 +434,7 @@ export default class HRInsert extends Component
             fontFamily: 'sans-serif',
             fontWeight: 'bold',
           }}
-        onSelect = {(sex)=> this.setState({sex})}/>
+        onSelect = {(sex)=> setSex(sex)}/>
 
 <ModalDropdown 
         style={styles.txtStyle}
@@ -446,35 +463,23 @@ export default class HRInsert extends Component
             fontFamily: 'sans-serif',
             fontWeight: 'bold',
           }}
-        onSelect = {(branch)=> this.setState({branch})}/>
+        onSelect = {(branch)=> setBranch(branch)}/>
 
 <View style= {{ flexDirection: 'row', justifyContent: 'space-evenly'}}>
-  <Text style={styles.txtStyle5}> Date of Birth: </Text> 
-  <DatePicker
-        style={styles.txtStyle4}
-        date={this.state.date}
-        mode="date"
-        placeholder="select date"
-        format="YYYY-DD-MM"
-        minDate="1950-05-01"
-        maxDate="2999-06-01"
-        confirmBtnText="Confirm"
-        cancelBtnText="Cancel"
-        customStyles={{
-          dateIcon: {
-            position: 'absolute',
-            left: 0,
-            top: 4,
-            marginLeft: 0
-          },
-          dateInput: {
-            marginLeft: 36
-          }
-          // ... You can check the source to find the other keys.
-        }}
-        onDateChange={(date) => {this.setState({date: date})}}
-        useNativeDriver= {true}
-      />
+      <View style={styles.txtStyle4}>
+          <Button color="#2474c8" title='Date of Birth' onPress={() => showMode('date')}/>
+      </View>
+      {show && (
+        <DateTimePicker
+        testID = 'dateTimePicker'
+        value={date}
+        mode={mode}
+        is24Hour={false}
+        display='default'
+        onChange={onChange}
+        />
+      )}
+    <Text style={styles.txtStyle5}> {textdate} </Text> 
 </View>
 
                 <TextInput
@@ -482,14 +487,14 @@ export default class HRInsert extends Component
                     placeholderTextColor={"black"}
                     style={styles.txtStyle}
                     keyboardType = 'numeric'
-                    onChangeText={age=>this.setState({age})}
+                    onChangeText={age=>setAge(age)}
                 />
 
                 <TextInput
                     placeholder={"Email"}
                     placeholderTextColor={"black"}
                     style={styles.txtStyle}
-                    onChangeText={email=>this.setState({email})}
+                    onChangeText={email=>setEmail(email)}
                 />
 
                 <TextInput
@@ -497,14 +502,14 @@ export default class HRInsert extends Component
                     placeholderTextColor={"black"}
                     style={styles.txtStyle}
                     keyboardType = 'numeric'
-                    onChangeText={contact_no=>this.setState({contact_no})}
+                    onChangeText={contact_no=>setContact_no(contact_no)}
                 />
 
                 <TextInput
                     placeholder={"Address"}
                     placeholderTextColor={"black"}
                     style={styles.txtStyle}
-                    onChangeText={address=>this.setState({address})}
+                    onChangeText={address=>setAddress(address)}
                 />
 
 <ModalDropdown 
@@ -548,7 +553,7 @@ export default class HRInsert extends Component
             fontFamily: 'sans-serif',
             fontWeight: 'bold',
           }}
-        onSelect = {(job)=> this.setState({job})}/>
+        onSelect = {(job)=> setJob(job)}/>
 
 <ModalDropdown 
         style={styles.txtStyle}
@@ -585,11 +590,12 @@ export default class HRInsert extends Component
             fontFamily: 'sans-serif',
             fontWeight: 'bold',
           }}
-        onSelect = {(position)=> this.setState({position})}/>
+        onSelect = {(position)=> setPosition(position)}/>
 
                 <Button
+                color="#2474c8" 
                     title={"Save Record"}
-                    onPress={this.InsertRecord}
+                    onPress={InsertRecord}
                 />
 
             </View>
@@ -597,7 +603,7 @@ export default class HRInsert extends Component
             </View>
         )
     }
-}
+
 
 const styles=StyleSheet.create({
 
@@ -649,24 +655,18 @@ const styles=StyleSheet.create({
     txtStyle4:{
         borderBottomWidth: 1,
         borderBottomColor: 'black',
-        marginBottom: 10,
-        padding: 1,
-        width: '65%',
-        backgroundColor: 'white',
-        
+        width: '50%',
     },
 
     txtStyle5:{
         borderBottomWidth: 1,
         borderBottomColor: 'black',
-        paddingTop: 11,
-        paddingBottom: 11,
-        paddingLeft:5,
+        padding: 11,
         marginBottom: 10,
-        width: '30%',
-        right: 5,
+        width: '39%',
         backgroundColor: 'white',
-        textAlign:'justify',
+        alignSelf: 'center',
+        textAlign: 'center',
         fontSize: 13
         
     },
