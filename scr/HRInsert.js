@@ -2,7 +2,7 @@ import React,{Component,useState} from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ImageBackground} from 'react-native';
 import bg from '../assets/bg.jpg';
 import ModalDropdown from 'react-native-modal-dropdown';
-import DatePicker from 'react-native-datepicker';
+import DateTimePicker from '@react-native-community/datetimepicker';
 // Ownded and Created by : Montera, John Henly A.
 // FB: fb.com/mhax.ter
 // Gmail: monterahens@gmail.com 
@@ -33,11 +33,9 @@ export default function HRInsert ()
         setDate(currentDate);
   
         let tempDate = new Date(currentDate);
-        let fDate = tempDate.getFullYear() + '-' + (tempDate.getDate() + 1) + '-' + tempDate.getMonth();
-        setOrderdate(fDate);
-        let fTime = tempDate.getHours() + ':' + tempDate.getMinutes();
-        setDate_of_Birth(fTime);
-        setTextdate(fTime);
+        let fDate = tempDate.getFullYear() + '-' + tempDate.getDate() + '-' + (tempDate.getMonth() + 1);
+        setDate_of_Birth(fDate);
+        setTextdate(fDate);
   
         console.log('CheckerDate:'+ fDate);
       }
@@ -197,7 +195,7 @@ export default function HRInsert ()
             position = "Entry I"
         }
 
-        var salary=salary1;
+        var salary;
 
         switch (job)
         {
@@ -540,9 +538,9 @@ export default function HRInsert ()
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={true}
         dropdownStyle={{
-          height: 250,
+          height: 150,
           width: '90%',
-          marginTop: '54%',
+          marginTop: '28%',
           marginLeft: -5,
           paddingLeft: 5
         }}
@@ -577,9 +575,9 @@ export default function HRInsert ()
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={true}
         dropdownStyle={{
-          height: 250,
+          height: 120,
           width: '90%',
-          marginTop: '54%',
+          marginTop: '20%',
           marginLeft: -5,
           paddingLeft: 5
         }}
