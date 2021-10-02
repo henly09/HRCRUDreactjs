@@ -12,7 +12,8 @@ export default class HRList extends Component {
       super();
       this.state = { 
       isLoading: true,
-      dataSource:[]
+      dataSource:[],
+      isFetching:false
     }
     }
 
@@ -26,12 +27,18 @@ export default class HRList extends Component {
             })  
           });
       }
+
+      onRefresh() {
+        this.setState({isFetching: true,},() => {this.componentDidMount();});
+        this.setState({ isFetching: false })
+    }
     
      _renderItem = ({ item }) => (
          
         <TouchableOpacity onPress={() => alert(item.body)}>
             <View style={styles.item}>
-              <Text style={styles.text}>ID#:{item.employeeID}, LastName:{item.lastName}, Branch:{item.branch}</Text>
+              <Text style={styles.text}>EmployeeID#:{item.employeeID},{'\n'}LastName:{item.lastName},{'\n'}Branch:{item.branch}
+              {'\n'}Job:{item.job},{'\n'}Position:{item.position},{'\n'}SalaryPerMonth:{item.salary}</Text>
             </View>
         </TouchableOpacity>
      );
@@ -88,8 +95,11 @@ export default class HRList extends Component {
 
                 <View style={styles.container}>     
                        <FlatList
+                          style={{ width: '100%'}}
                           data={ this.state.dataSource }         
                           renderItem={this._renderItem}
+                          onRefresh={() => this.onRefresh()}
+                          refreshing={this.state.isFetching} 
                           keyExtractor={(item, index) => index.toString()}
                         />                
                 </View>
@@ -104,28 +114,29 @@ export default class HRList extends Component {
                 const styles = StyleSheet.create({
                  
                   container :{
-                    alignItems:'flex-start',
+                    alignItems:'center',
                     backgroundColor: '#F5FCFF',
-                    top:150,
+                    textAlign: 'center',
+                    top:160,
                     height: '70%',
                     width: '90%',
                     left: '5%',
-                    paddingLeft: 20,
-                    paddingTop: 10,
-                    paddingBottom: 10
-
+                    padding: 5,
+                    paddingRight: 20
                     },
                    
                 item:{
-                  paddingBottom: 5,
-                  borderBottomWidth:2,
+                  borderBottomWidth:3,
                   borderBottomColor: '#eee',
+                  width: '150%',
+                  padding :10,
+                  left: 80
                     },
                     
                 text:{
-                        fontSize: 14,
-                        fontFamily: 'sans-serif',
-                        fontWeight: 'bold',
-                        fontStyle: "italic",
+                  fontSize: 15,
+                  fontFamily: 'sans-serif',
+                  fontWeight: 'bold',
+                  fontStyle: "italic",
                     }
                 });

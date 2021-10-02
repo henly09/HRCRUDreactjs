@@ -26,7 +26,8 @@ export default class HRDelete extends Component {
         }
         this.state = { 
             isLoading: true,
-            dataSource:[]
+            dataSource:[],
+            isFetching:false
           }
     }
 
@@ -88,13 +89,19 @@ componentDidMount = async() => {
     }
   }
 
+  onRefresh() {
+    this.setState({isFetching: true,},() => {this.componentDidMount();});
+    this.setState({ isFetching: false })
+}
+
  _renderItem = ({ item }) => (
      
     <TouchableOpacity onPress={() => alert(item.body)}>
-        <View style={styles.item}>
-            <Text style={styles.text}>ID#:{item.employeeID}, LastName:{item.lastName}, Branch:{item.branch}</Text>
-        </View>
-    </TouchableOpacity>
+            <View style={styles.item}>
+              <Text style={styles.text}>EmployeeID#:{item.employeeID},{'\n'}LastName:{item.lastName},{'\n'}Branch:{item.branch}
+              {'\n'}Job:{item.job},{'\n'}Position:{item.position},{'\n'}SalaryPerMonth:{item.salary}</Text>
+            </View>
+        </TouchableOpacity>
  );
 
 /*------------------------------------------------------------------------------*/
@@ -162,7 +169,9 @@ componentDidMount = async() => {
             <SafeAreaView style={styles.container}>     
                    <FlatList
                       style={{padding: 10}}
-                      data={ this.state.dataSource }       
+                      data={ this.state.dataSource }
+                      onRefresh={() => this.onRefresh()}
+                      refreshing={this.state.isFetching}        
                       renderItem={this._renderItem}
                       keyExtractor={(item, index) => index.toString()}
                     />                
@@ -196,6 +205,7 @@ const styles=StyleSheet.create({
     container :{
         alignItems:'center',
         backgroundColor: '#F5FCFF',
+        textAlign: 'center',
         marginTop: 10,
         paddingTop: 10,
         top: 5,
@@ -206,16 +216,18 @@ const styles=StyleSheet.create({
         },
 
     item:{
-            paddingBottom: 10,
-            borderBottomWidth:2,
-            borderBottomColor: '#eee',
+        borderBottomWidth:3,
+        borderBottomColor: '#eee',
+        width: '150%',
+        padding :10,
+        left: 50
         },
 
     text:{
-            fontSize: 14,
-            fontFamily: 'sans-serif',
-            fontWeight: 'bold',
-            fontStyle: "italic",
+        fontSize: 15,
+        fontFamily: 'sans-serif',
+        fontWeight: 'bold',
+        fontStyle: "italic",
         }
 
 

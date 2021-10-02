@@ -25,7 +25,6 @@ export default function HRInsert ()
     const [address1, setAddress] = useState('');
     const [job1, setJob] = useState('');
     const [position1, setPosition] = useState('');
-    const [salary1, setSalary] = useState('');
    
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
