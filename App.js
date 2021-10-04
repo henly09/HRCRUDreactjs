@@ -195,6 +195,7 @@ export default function App() {
                 style={{
                   width:25,
                   height:25,
+                  tintColor: focused ? '#b8ada2' : 'white'
                 }}
                 />
               </View>
@@ -211,6 +212,7 @@ export default function App() {
                 style={{
                   width:25,
                   height:25,
+                  tintColor: focused ? '#b8ada2' : 'white'
                 }}
                 />
               </View>
@@ -227,6 +229,7 @@ export default function App() {
                 style={{
                   width:25,
                   height:25,
+                  tintColor: focused ? '#b8ada2' : 'white'
                 }}
                 />
               </View>
@@ -242,6 +245,7 @@ export default function App() {
                 style={{
                   width:25,
                   height:25,
+                  tintColor: focused ? '#b8ada2' : 'white'
                 }}
                 />
               </View>
@@ -259,6 +263,7 @@ export default function App() {
                 style={{
                   width:25,
                   height:25,
+                  tintColor: focused ? '#b8ada2' : 'white'
                 }}
                 />
               </View>

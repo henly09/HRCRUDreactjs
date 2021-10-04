@@ -37,8 +37,8 @@ export default class HRList extends Component {
          
         <TouchableOpacity onPress={() => alert(item.body)}>
             <View style={styles.item}>
-              <Text style={styles.text}>EmployeeID#:{item.employeeID},{'\n'}LastName:{item.lastName},{'\n'}Branch:{item.branch}
-              {'\n'}Job:{item.job},{'\n'}Position:{item.position},{'\n'}SalaryPerMonth:{item.salary}</Text>
+              <Text style={styles.text}>EmployeeID#:{item.employeeID}{'\n'}LastName:{item.lastName}{'\n'}Branch:{item.branch}
+              {'\n'}Job:{item.job}{'\n'}Position:{item.position}{'\n'}Salary:₱{item.salary}</Text>
             </View>
         </TouchableOpacity>
      );
