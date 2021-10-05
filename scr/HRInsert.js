@@ -140,7 +140,7 @@ export default function HRInsert ()
             job = "Receptionist"
         }
         if (job == 13){
-            job = "Foreperson, supervisor, lead person"
+            job = "Supervisor"
         }
         if (job == 14){
             job = "Marketing manager"
@@ -525,7 +525,7 @@ export default function HRInsert ()
             "Accountant",
             "Office manager",
             "Receptionist",
-            "Foreperson, supervisor, lead person",
+            "Supervisor",
             "Marketing manager",
             "Purchasing manager",
             "Manager",

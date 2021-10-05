@@ -5,6 +5,26 @@ import logo from '../assets/logo.png';
 // Ownded and Created by : Montera, John Henly A.
 // FB: fb.com/mhax.ter
 // Gmail: monterahens@gmail.com 
+
+import CEO from '../assets/thumbnails/CEO.png';
+import COO from '../assets/thumbnails/COO.png';
+import CFO from '../assets/thumbnails/CFO.png';
+import CMO from '../assets/thumbnails/CMO.png';
+import CTO from '../assets/thumbnails/CTO.png';
+import PRES from '../assets/thumbnails/PRES.png';
+import VPRES from '../assets/thumbnails/VPRES.png';
+import EASSI from '../assets/thumbnails/EASSI.png';
+import OMAN from '../assets/thumbnails/OMAN.png';
+import EMAN from '../assets/thumbnails/EMAN.png';
+import ACC from '../assets/thumbnails/ACC.png';
+import OFMAN from '../assets/thumbnails/OFMAN.png';
+import RECEP from '../assets/thumbnails/RECEP.png';
+import SUPER from '../assets/thumbnails/SUPER.png';
+import MMAN from '../assets/thumbnails/MMAN.png';
+import PMAN from '../assets/thumbnails/PMAN.png';
+import MANAGER from '../assets/thumbnails/MANAGER.png';
+import PROFSTAF from '../assets/thumbnails/PROFSTAF.png';
+
 export default class HRList extends Component {
 
     constructor()
@@ -33,15 +53,62 @@ export default class HRList extends Component {
         this.setState({ isFetching: false })
     }
     
-     _renderItem = ({ item }) => (
-         
-        <TouchableOpacity onPress={() => alert(item.body)}>
-            <View style={styles.item}>
-              <Text style={styles.text}>EmployeeID#:{item.employeeID}{'\n'}LastName:{item.lastName}{'\n'}Branch:{item.branch}
-              {'\n'}Job:{item.job}{'\n'}Position:{item.position}{'\n'}Salary:₱{item.salary}</Text>
-            </View>
-        </TouchableOpacity>
-     );
+     _renderItem = ({ item }) => {
+
+      thumbnail = item.job;
+     
+      const job = [
+        CEO ,
+        COO ,
+        CFO ,
+        CMO ,
+        CTO ,
+        PRES ,
+        VPRES ,
+        EASSI ,
+        OMAN ,
+        EMAN ,
+        ACC ,
+        OFMAN ,
+        RECEP ,
+        SUPER ,
+        MMAN ,
+        PMAN ,
+        MANAGER ,
+        PROFSTAF];
+     
+     var e;
+     var thumbnail;
+     
+     if ( thumbnail == 'Chief Executive Officer (CEO)'){e=0;}
+     if ( thumbnail == 'Chief Operating Officer (COO)'){e=1;}
+     if ( thumbnail == 'Chief Financial Officer (CFO)'){e=2;}
+     if ( thumbnail == 'Chief Marketing Officer (CMO)'){e=3;}
+     if ( thumbnail == 'Chief Technology Officer (CTO)'){e=4;}
+     if ( thumbnail == 'President'){e=5;}
+     if ( thumbnail == 'Vice President'){e=6;}
+     if ( thumbnail == 'Executive Assistant'){e=7;}
+     if ( thumbnail == 'Operations manager'){e=8;}
+     if ( thumbnail == 'Environmental manager'){e=9;}
+     if ( thumbnail == 'Accountant'){e=10;}
+     if ( thumbnail == 'Office manager'){e=11;}
+     if ( thumbnail == 'Receptionist'){e=12;}
+     if ( thumbnail == 'Supervisor'){e=13;}
+     if ( thumbnail == 'Marketing manager'){e=14;}
+     if ( thumbnail == 'Purchasing manager'){e=15;}
+     if ( thumbnail == 'Manager'){e=16;}
+     if ( thumbnail == 'Professional Staff'){e=17;}
+       
+      return (<TouchableOpacity onPress={() => alert(item.body)}>
+      <View>
+      <View style={styles.item}>
+        <Text style={styles.text}>EmployeeID#: {item.employeeID}{'\n'}Name: {item.lastName}, {item.firstName}{'\n'}Branch:{item.branch}
+        {'\n'}Job: {item.job}{'\n'}Position: {item.position}{'\n'}Salary: ₱{item.salary}</Text>
+      </View>
+      <Image style= {styles.thumbnail}source={job[e]}/>
+      </View>
+  </TouchableOpacity>
+     );}
 
         render() {
  
@@ -121,16 +188,14 @@ export default class HRList extends Component {
                     height: '70%',
                     width: '90%',
                     left: '5%',
-                    padding: 5,
-                    paddingRight: 20
                     },
                    
                 item:{
                   borderBottomWidth:3,
                   borderBottomColor: '#eee',
-                  width: '150%',
+                  width: '160%',
                   padding :10,
-                  left: 80
+                  left: 90
                     },
                     
                 text:{
@@ -138,5 +203,14 @@ export default class HRList extends Component {
                   fontFamily: 'sans-serif',
                   fontWeight: 'bold',
                   fontStyle: "italic",
+                    },
+
+                thumbnail:{
+                      resizeMode: 'center',
+                      position: 'absolute',
+                      height: 70, 
+                      width: 90, 
+                      top: 30,
+                      left: 7,
                     }
                 });
