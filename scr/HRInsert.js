@@ -369,7 +369,7 @@ export default function HRInsert ()
         fontWeight: 'bold',
         fontStyle: "italic",
         position: 'absolute',
-        top: 65,
+        top: 45,
         left: 8,
         color: 'white',
         textShadowColor:'#0c0d0e',
@@ -383,7 +383,7 @@ export default function HRInsert ()
         fontWeight: 'bold',
         fontStyle: "italic",
         position: 'absolute',
-        top: 110,
+        top: 90,
         left: 13,
         color: 'white',
         textShadowColor:'#0c0d0e',
@@ -411,7 +411,7 @@ export default function HRInsert ()
     <ModalDropdown 
         style={styles.txtStyle}
         options={["Male","Female","Others.."]}
-        defaultValue={"Sex                                                                                    V"}
+        defaultValue={"Sex                                                                                   V"}
         textStyle={{
            fontSize: 14
         }}
@@ -419,10 +419,9 @@ export default function HRInsert ()
         showsVerticalScrollIndicator={true}
         dropdownStyle={{
           height: 110,
-          width: '90%',
-          marginTop: -57,
-          marginLeft: -5,
-          paddingLeft: 5
+          width: '85%',
+          marginTop: -55,
+          right: -100,
         }}
         isFullWidth={true}
         dropdownTextStyle={{
@@ -448,10 +447,8 @@ export default function HRInsert ()
         showsVerticalScrollIndicator={true}
         dropdownStyle={{
           height: 110,
-          width: '90%',
-          marginTop: -57,
-          marginLeft: -5,
-          paddingLeft: 5
+          width: '85%',
+          marginTop: -55,
         }}
         isFullWidth={true}
         dropdownTextStyle={{
@@ -605,29 +602,28 @@ export default function HRInsert ()
 const styles=StyleSheet.create({
 
     ViewStyle:{
-        flex:1,
         padding: 20,
-        marginTop:10,
-        top: '16%'
+        top: '14%'
     },
 
     txtStyle:{
-        borderBottomWidth: 1,
         borderBottomColor: 'black',
-        padding: 5,
-        marginBottom: 10,
-        backgroundColor: 'white'
+        padding: 8,
+        marginBottom: 8,
+        backgroundColor: 'white',
+        borderRadius: 5
     },
     txtStyle2:{
-        borderBottomWidth: 1,
+
         borderBottomColor: 'black',
         padding: 5,
         width: 175,
         marginBottom: 10,
         backgroundColor: 'white',
+        borderRadius: 5
     },
     randombutton:{
-        borderBottomWidth: 1,
+
         borderBottomColor: 'black',
         width: 100,
         marginBottom: 10,
@@ -641,22 +637,24 @@ const styles=StyleSheet.create({
         borderRadius: 3    
     },
     txtStyle3:{
-        borderBottomWidth: 1,
+
         borderBottomColor: 'black',
         padding: 5,
         marginBottom: 10,
         backgroundColor: 'white',
         width: 245,
-        marginRight: 5
+        marginRight: 5,
+        borderRadius: 5
     },
     txtStyle4:{
-        borderBottomWidth: 1,
+
         borderBottomColor: 'black',
         width: '50%',
+        borderRadius: 5
     },
 
     txtStyle5:{
-        borderBottomWidth: 1,
+
         borderBottomColor: 'black',
         padding: 11,
         marginBottom: 10,
@@ -664,7 +662,8 @@ const styles=StyleSheet.create({
         backgroundColor: 'white',
         alignSelf: 'center',
         textAlign: 'center',
-        fontSize: 13
+        fontSize: 13,
+        borderRadius: 5
         
     },
 

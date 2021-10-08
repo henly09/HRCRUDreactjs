@@ -184,7 +184,7 @@ export default class HRList extends Component {
                     alignItems:'center',
                     backgroundColor: '#F5FCFF',
                     textAlign: 'center',
-                    top:160,
+                    top:150,
                     height: '70%',
                     width: '90%',
                     left: '5%',
