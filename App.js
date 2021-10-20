@@ -455,21 +455,18 @@ function Slider({ navigation }) {
        title: 'SERVICE',
        text: 'Every good conversation starts with listening.',
        image: require('./assets/hrgif.gif'),
-       backgroundColor: '#fcc464'
      },
      {
        key: 2,
        title: 'OFFERS',
        text: 'When people go to work, \n they shouldn’t have to leave their hearts at home',
        image: require('./assets/hrgif2.gif'),
-       backgroundColor: '#ecd7b5'
      },
      {
        key: 3,
        title: 'CHILL',
        text: 'In order to build a rewarding employee experience, you need to understand what matters most to your people.\n Review us on Google Play Store.',
        image: require('./assets/hrgif3.gif'),
-       backgroundColor: '#dc8e94'
      }
    ];
   
@@ -478,8 +475,18 @@ function Slider({ navigation }) {
    }
   
     _renderItem = ({ item }) => {
+
+      const bg = [styles.slider,styles.slider1,styles.slider2];
+
+      var e;
+       
+      if ( item.title == 'SERVICE'){e=0;}
+      if ( item.title == 'OFFERS'){e=1;}
+      if ( item.title == 'CHILL'){e=2;}
+
+
      return (
-       <View style={styles.slider}>
+       <View style={bg[e]}>
          <Text style={styles.title}>{item.title}</Text>
                <Image style={styles.image} source={item.image} />
          <Text style={styles.text}>{item.text}</Text>
@@ -548,7 +555,21 @@ const styles = StyleSheet.create({
   slider: {
     height: '100%',
     width: '100%',
-    backgroundColor: '#2ca4dc',
+    backgroundColor: '#5a6973',
+    position: 'absolute'
+  },
+
+  slider1: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: '#1c5c74',
+    position: 'absolute'
+  },
+
+  slider2: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: '#5c9cec',
     position: 'absolute'
   },
 
