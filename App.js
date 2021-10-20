@@ -11,6 +11,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
 import SideMenu from 'react-native-side-menu-updated';
+import AppIntroSlider from 'react-native-app-intro-slider';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import fb from './assets/fb.png';
 import google from './assets/google.png';
@@ -353,6 +355,7 @@ export default function Main() {
     <NavigationContainer>
         <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown:false}}>
           <Stack.Screen name="Home" component={LoginScreen}/>
+          <Stack.Screen name="HomeHalf" component={Slider}/>
           <Stack.Screen name="HomeSecond" component={App}/>
         </Stack.Navigator>
     </NavigationContainer>
@@ -371,7 +374,7 @@ function LoginScreen({navigation}) {
     if (user == loginuser && pass == loginpass){
       ToastAndroid.show("Login Successfully!",ToastAndroid.SHORT);
       console.log("user: "+loginuser +" "+"pass: "+loginpass);
-      navigation.navigate("HomeSecond");
+      navigation.navigate("HomeHalf");
     }
     else{
       ToastAndroid.show("Username or Password is Invalid!",ToastAndroid.SHORT);
@@ -444,6 +447,82 @@ function LoginScreen({navigation}) {
     );
   }
 
+function Slider({ navigation }) {
+
+    const slides = [
+     {
+       key: 1,
+       title: 'SERVICE',
+       text: 'Every good conversation starts with listening.',
+       image: require('./assets/hrgif.gif'),
+       backgroundColor: '#fcc464'
+     },
+     {
+       key: 2,
+       title: 'OFFERS',
+       text: 'When people go to work, \n they shouldn’t have to leave their hearts at home',
+       image: require('./assets/hrgif2.gif'),
+       backgroundColor: '#ecd7b5'
+     },
+     {
+       key: 3,
+       title: 'CHILL',
+       text: 'In order to build a rewarding employee experience, you need to understand what matters most to your people.\n Review us on Google Play Store.',
+       image: require('./assets/hrgif3.gif'),
+       backgroundColor: '#dc8e94'
+     }
+   ];
+  
+   onCall = async() => {
+     navigation.navigate('HomeSecond');
+   }
+  
+    _renderItem = ({ item }) => {
+     return (
+       <View style={styles.slider}>
+         <Text style={styles.title}>{item.title}</Text>
+               <Image style={styles.image} source={item.image} />
+         <Text style={styles.text}>{item.text}</Text>
+       </View>
+     );
+   }
+  
+   _renderNextButton = () => {
+     return (
+       <View style={styles.buttonCircle}>
+         <Icon
+           name="arrow-forward-outline"
+           color="rgba(255, 255, 255, .9)"
+           size={24}
+         />
+       </View>
+     );
+   };
+   _renderDoneButton = () => {
+     return (
+       <View style={styles.buttonCircle}>
+         <Icon
+           name="md-checkmark"
+           color="rgba(255, 255, 255, .9)"
+           size={24}
+         />
+       </View>
+     );
+   };
+  
+   return (
+     <AppIntroSlider
+       data={slides}
+       renderItem={_renderItem}
+       renderDoneButton={_renderDoneButton}
+       renderNextButton={_renderNextButton}
+       keyExtractor={(item, index) => index.toString()}
+       dotClickEnabled={true}
+       onDone={onCall}
+     />
+   );
+  }
+
 const styles = StyleSheet.create({
   
   sidemenunav: {
@@ -453,6 +532,52 @@ const styles = StyleSheet.create({
     color:'white',
     width: '80%',
     paddingTop: 20
+  },
+
+  title:{
+    alignSelf: 'center',
+    top:140,
+    fontSize: 20,
+    fontFamily: 'sans-serif',
+    fontWeight: 'bold',
+    fontStyle: "italic",
+    textAlign: 'center',
+    color: 'white'
+  },
+
+  slider: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: '#2ca4dc',
+    position: 'absolute'
+  },
+
+  text:{
+    alignSelf: 'center',
+    top: 180,
+    fontSize: 20,
+    fontFamily: 'sans-serif',
+    fontWeight: 'bold',
+    fontStyle: "italic",
+    textAlign: 'center',
+    color: 'white'
+  },
+
+  image: {
+   resizeMode: 'cover',
+   height: 250,
+   width: 250,
+   alignSelf: 'center',
+   top: '20%',
+  },
+
+  buttonCircle: {
+    width: 40,
+    height: 40,
+    backgroundColor: 'rgba(0, 0, 0, .2)',
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   logo: { 
