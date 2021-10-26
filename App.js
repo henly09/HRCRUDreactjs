@@ -449,26 +449,26 @@ function LoginScreen({navigation}) {
 
 function Slider({ navigation }) {
 
-    const slides = [
-     {
-       key: 1,
-       title: 'SERVICE',
-       text: 'Every good conversation starts with listening.',
-       image: require('./assets/hrgif.gif'),
-     },
-     {
-       key: 2,
-       title: 'OFFERS',
-       text: 'When people go to work, \n they shouldn’t have to leave their hearts at home',
-       image: require('./assets/hrgif2.gif'),
-     },
-     {
-       key: 3,
-       title: 'CHILL',
-       text: 'In order to build a rewarding employee experience, you need to understand what matters most to your people.\n Review us on Google Play Store.',
-       image: require('./assets/hrgif3.gif'),
-     }
-   ];
+  const slides = [
+    {
+      key: 1,
+      title: 'TRAINING AND DEVELOPMENT',
+      text: 'Every good conversation starts with listening.',
+      image: require('./assets/hrgif.gif'),
+    },
+    {
+      key: 2,
+      title: 'TRAINING JOB APPLICANTS',
+      text: 'When people go to work, \n they shouldn’t have to leave their hearts at home',
+      image: require('./assets/hrgif2.gif'),
+    },
+    {
+      key: 3,
+      title: 'SOCIAL ENVIRONMENT',
+      text: 'In order to build a rewarding employee experience, you need to understand what matters most to your people.\n Review us on Google Play Store.',
+      image: require('./assets/hrgif3.gif'),
+    }
+  ];
   
    onCall = async() => {
      navigation.navigate('HomeSecond');
@@ -480,9 +480,9 @@ function Slider({ navigation }) {
 
       var e;
        
-      if ( item.title == 'SERVICE'){e=0;}
-      if ( item.title == 'OFFERS'){e=1;}
-      if ( item.title == 'CHILL'){e=2;}
+      if ( item.title == 'TRAINING AND DEVELOPMENT'){e=0;}
+      if ( item.title == 'TRAINING JOB APPLICANTS'){e=1;}
+      if ( item.title == 'SOCIAL ENVIRONMENT'){e=2;}
 
 
      return (
