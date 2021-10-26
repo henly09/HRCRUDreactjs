@@ -305,11 +305,11 @@ function SideMenuBar(){
     <Text style={styles.sidemenunav}>DATABASE LIST</Text>
     </TouchableOpacity>
     
-    <TouchableOpacity onPress={() => alert('Page not available!')}>
+    <TouchableOpacity onPress={() => ToastAndroid.show("Page Not Available!",ToastAndroid.SHORT)}>
     <Text style={styles.sidemenunav}>CONTACT</Text>
     </TouchableOpacity>
     
-    <TouchableOpacity onPress={() => alert('Page not available!')}>
+    <TouchableOpacity onPress={() => ToastAndroid.show("Page Not Available!",ToastAndroid.SHORT)}>
     <Text style={styles.sidemenunav}>SERVICES</Text>
     </TouchableOpacity>
 
