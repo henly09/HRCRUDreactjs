@@ -13,6 +13,7 @@ import { useNavigation } from '@react-navigation/native';
 import SideMenu from 'react-native-side-menu-updated';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { Linking } from 'react-native';
 
 import fb from './assets/fb.png';
 import google from './assets/google.png';
@@ -393,7 +394,7 @@ function LoginScreen({navigation}) {
                   position: 'absolute',
        }}/> 
       
-        <Text style={styles.bakerytext}> SWIPE WIRE {"\n"} I.T SOLUTIONS </Text>
+        <Text style={styles.HRtext}> SWIPE WIRE {"\n"} I.T SOLUTIONS </Text>
   
           <Text style={styles.sysdat}> Human Resources Database System Management™ </Text>
   
@@ -401,7 +402,7 @@ function LoginScreen({navigation}) {
            source= {logo}
            style={styles.logo}/>
   
-           <View style={{alignSelf: 'center', justifyContent: 'center', top: 400,justifyContent: 'space-evenly' }}>
+           <View style={{alignSelf: 'center', justifyContent: 'center', top: 440,justifyContent: 'space-evenly' }}>
   
            <TextInput
                       placeholder={"Username:"}
@@ -420,7 +421,7 @@ function LoginScreen({navigation}) {
   
            </View>
   
-           <View style={{alignSelf: 'center', top: 420}}> 
+           <View style={{alignSelf: 'center', top: 465}}> 
         
            <TouchableOpacity onPress={onLogin}>
              <Text style={styles.loginbutton}>LOGIN</Text>
@@ -429,18 +430,26 @@ function LoginScreen({navigation}) {
   
            <View style={{ 
           flexDirection: 'row', 
-          top: '110%', 
+          top: '125%', 
           justifyContent: 'space-evenly',
           }}>
-  
-          <Image source= {fb} style={styles.loginwith}/>
-  
+
+ <TouchableOpacity onPress={() => Linking.openURL('https://www.facebook.com/')}> 
+          <Image source= {fb} style={styles.loginwith} />
+  </TouchableOpacity>
+
+  <TouchableOpacity onPress={() => Linking.openURL('https://accounts.google.com/signin/v2/identifier?flowName=GlifWebSignIn&flowEntry=ServiceLogin')}> 
           <Image source= {google} style={styles.loginwith}/>
-  
+  </TouchableOpacity>
+
+  <TouchableOpacity onPress={() => Linking.openURL('https://www.instagram.com/')}> 
           <Image source= {insta} style={styles.loginwith}/>
-  
+  </TouchableOpacity>
+
+  <TouchableOpacity onPress={() => Linking.openURL('https://twitter.com/')}> 
           <Image source= {twitter} style={styles.loginwith}/>
-  
+  </TouchableOpacity>
+
           </View>
   
      
@@ -607,7 +616,7 @@ const styles = StyleSheet.create({
     width: 220,
     position: 'absolute',
     alignSelf:'center',
-    top: 50,
+    top: 60,
     resizeMode: 'center',
     },
 
@@ -618,7 +627,7 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
     position: 'absolute',
     alignSelf:'center',
-    top: 325,
+    top: 355,
     color: 'white',
     textShadowColor:'#0c0d0e',
     textShadowOffset:{width: 5, height: 5},
@@ -626,14 +635,14 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
 
-  bakerytext: {
+  HRtext: {
     fontSize: 35,
     fontFamily: 'sans-serif',
     fontWeight: 'bold',
     fontStyle: "italic",
     position: 'absolute',
     alignSelf:'center',
-    top: 235,
+    top: 265,
     color: 'white',
     textShadowColor:'#0c0d0e',
     textShadowOffset:{width: 5, height: 5},
