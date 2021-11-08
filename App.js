@@ -139,17 +139,17 @@ function App() {
     isOpen={false}
     allowOverlayPressPropagation={true}
     edgeHitWidth={160}>
+
     <Tab.Navigator
     initialRouteName="Home"
       screenOptions={{
         tabBarStyle: { 
           position: 'absolute',
           backgroundColor: '#0f7cc3',
-          borderRadius: 10,
+          borderTopLeftRadius: 10,
+          borderTopRightRadius: 10,
           height: 65,
-          width: "98%",
-          left: 5,
-          bottom: 5
+          width: "100%",
         },
         tabBarShowLabel: false,
         showElevation: true
@@ -480,11 +480,11 @@ function Slider({ navigation }) {
     }
   ];
   
-   onCall = async() => {
+  const onCall = async() => {
      navigation.navigate('HomeSecond');
    }
   
-    _renderItem = ({ item }) => {
+  const  _renderItem = ({ item }) => {
 
       const bg = [styles.slider,styles.slider1,styles.slider2];
 
@@ -504,7 +504,7 @@ function Slider({ navigation }) {
      );
    }
   
-   _renderNextButton = () => {
+   const _renderNextButton = () => {
      return (
        <View style={styles.buttonCircle}>
          <Icon
@@ -515,7 +515,8 @@ function Slider({ navigation }) {
        </View>
      );
    };
-   _renderDoneButton = () => {
+   
+   const _renderDoneButton = () => {
      return (
        <View style={styles.buttonCircle}>
          <Icon
