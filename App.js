@@ -366,8 +366,8 @@ export default function Main() {
 
 function LoginScreen({navigation}) {
   
-  const user = 'henly09';
-  const pass = '09108076145145';
+  const user = 'awtsgege';
+  const pass = '123123';
   
   const [loginuser, setLoginuser] = useState('');
   const [loginpass, setLoginpass] = useState('');
